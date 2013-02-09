@@ -18,7 +18,6 @@
 
 // Instance variables
 @property (strong, nonatomic) CardMatchingGame *game;
-@property (strong, nonatomic) Deck *deck;
 @property (nonatomic) int flipCount;
 
 @end
@@ -30,18 +29,10 @@
 	self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (Deck *)deck {
-	if (!_deck) {
-		_deck = [[PlayingCardDeck alloc] init];
-	}
-	
-	return _deck;
-}
-
 - (CardMatchingGame *)game {
 	if (!_game) {
 		_game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-																							usingDeck:self.deck];
+																							usingDeck:[[PlayingCardDeck alloc] init]];
 	}
 	
 	return _game;
@@ -49,12 +40,6 @@
 
 - (void)setCardButtons:(NSArray *)cardButtons {
 	_cardButtons = cardButtons;
-	
-	for (UIButton *cardButton in cardButtons) {
-    Card *card = [self.deck drawRandomCard];
-		[cardButton setTitle:card.contents
-								forState:UIControlStateSelected];
-	}
 }
 
 - (IBAction)flipCard:(UIButton *)sender {
