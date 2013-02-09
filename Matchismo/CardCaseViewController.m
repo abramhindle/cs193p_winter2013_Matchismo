@@ -8,6 +8,7 @@
 
 #import "CardCaseViewController.h"
 #import "Model/PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface CardCaseViewController ()
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 // Instance variables
+@property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) Deck *deck;
 @property (nonatomic) int flipCount;
 
@@ -34,6 +36,15 @@
 	}
 	
 	return _deck;
+}
+
+- (CardMatchingGame *)game {
+	if (!_game) {
+		_game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+																							usingDeck:self.deck];
+	}
+	
+	return _game;
 }
 
 - (void)setCardButtons:(NSArray *)cardButtons {
