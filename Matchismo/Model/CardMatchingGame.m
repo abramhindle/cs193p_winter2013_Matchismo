@@ -30,7 +30,7 @@
 	self = [super init];
 	
 	if (self) {
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < cardCount; i++) {
 			Card *card = [deck drawRandomCard];
 			
 			if (!card) {
