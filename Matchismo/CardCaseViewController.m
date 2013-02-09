@@ -13,6 +13,7 @@
 
 // UI Elements
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 // Instance variables
 @property (strong, nonatomic) PlayingCardDeck *playingDeck;

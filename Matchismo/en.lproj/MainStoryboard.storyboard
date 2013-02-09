@@ -216,6 +216,18 @@
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="hkb-HJ-TcI" id="Ese-RM-xKD"/>
+                        <outletCollection property="cardButtons" destination="Pc3-Ea-cul" id="d69-T6-5gT"/>
+                        <outletCollection property="cardButtons" destination="Iqq-8M-7Cg" id="WTz-s6-192"/>
+                        <outletCollection property="cardButtons" destination="6N3-Sw-uUh" id="sqR-Oa-w2b"/>
+                        <outletCollection property="cardButtons" destination="nel-0w-Ol1" id="Zyr-0N-zLJ"/>
+                        <outletCollection property="cardButtons" destination="YbL-SE-z0I" id="GJ3-xS-a1M"/>
+                        <outletCollection property="cardButtons" destination="7qM-Im-FU2" id="wTH-JW-Tru"/>
+                        <outletCollection property="cardButtons" destination="eFK-2V-FLv" id="rWo-D0-e0H"/>
+                        <outletCollection property="cardButtons" destination="MGx-DX-Vhh" id="IdZ-1u-EiZ"/>
+                        <outletCollection property="cardButtons" destination="Tr1-Ze-koj" id="Sgt-cm-pgm"/>
+                        <outletCollection property="cardButtons" destination="8OS-mg-ptJ" id="dnN-kd-GCi"/>
+                        <outletCollection property="cardButtons" destination="gmr-K2-l83" id="LN9-vn-k0u"/>
+                        <outletCollection property="cardButtons" destination="Gmb-j4-TV9" id="53d-MI-Sym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -228,6 +240,7 @@
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
