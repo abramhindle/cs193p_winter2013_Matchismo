@@ -48,4 +48,27 @@
 	return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
+- (void)flipCardAtIndex:(NSUInteger)index {
+	Card *card = [self cardAtIndex:index];
+	
+	if (!card.isUnplayable) {
+		if (!card.isFaceUp) {
+			// see if flipping this card up creates a match
+			for (Card *otherCard in self.cards) {
+				if (otherCard.isFaceUp && !otherCard.isUnplayable) {
+					int matchScore = [card match:@[otherCard]];
+					
+					if (matchScore) {
+						otherCard.unplayable = YES;
+						card.unplayable = YES;
+						self.score += matchScore;
+					}
+				}
+			}
+		}
+		
+		card.faceUp = !card.isFaceUp;
+	}
+}
+
 @end
