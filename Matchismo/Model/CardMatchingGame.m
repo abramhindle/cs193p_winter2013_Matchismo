@@ -48,6 +48,8 @@
 	return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
+#define MATCH_BONUS 4
+
 - (void)flipCardAtIndex:(NSUInteger)index {
 	Card *card = [self cardAtIndex:index];
 	
@@ -61,7 +63,7 @@
 					if (matchScore) {
 						otherCard.unplayable = YES;
 						card.unplayable = YES;
-						self.score += matchScore;
+						self.score += matchScore * MATCH_BONUS;
 					}
 				}
 			}
