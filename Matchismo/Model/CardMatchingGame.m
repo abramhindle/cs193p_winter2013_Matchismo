@@ -49,6 +49,7 @@
 }
 
 #define MATCH_BONUS 4
+#define MISMATCH_PENALTY 2
 
 - (void)flipCardAtIndex:(NSUInteger)index {
 	Card *card = [self cardAtIndex:index];
@@ -64,7 +65,12 @@
 						otherCard.unplayable = YES;
 						card.unplayable = YES;
 						self.score += matchScore * MATCH_BONUS;
+					} else {
+						otherCard.faceUp = NO;
+						self.score -= MISMATCH_PENALTY;
 					}
+					
+					break;
 				}
 			}
 		}
