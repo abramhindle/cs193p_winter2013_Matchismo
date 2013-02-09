@@ -48,6 +48,7 @@
 	return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
+#define FLIP_COST 1
 #define MATCH_BONUS 4
 #define MISMATCH_PENALTY 2
 
@@ -73,6 +74,8 @@
 					break;
 				}
 			}
+			
+			self.score -= FLIP_COST;
 		}
 		
 		card.faceUp = !card.isFaceUp;
