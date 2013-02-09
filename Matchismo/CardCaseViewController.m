@@ -7,6 +7,7 @@
 //
 
 #import "CardCaseViewController.h"
+#import "Model/PlayingCardDeck.h"
 
 @interface CardCaseViewController ()
 
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 
 // Instance variables
+@property (strong, nonatomic) PlayingCardDeck *playingDeck;
 @property (nonatomic) int flipCount;
 
 @end
@@ -25,9 +27,22 @@
 	self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (IBAction)flipCard:(UIButton *)sender {
-	sender.selected = !sender.isSelected;
+- (PlayingCardDeck *)playingDeck {
+	if (!_playingDeck) {
+		_playingDeck = [[PlayingCardDeck alloc] init];
+	}
 	
+	return _playingDeck;
+}
+
+- (IBAction)flipCard:(UIButton *)sender {
+	// Set card if selected.
+	if (sender.selected) {
+		[sender setTitle:[self.playingDeck drawRandomCard].contents
+						forState:UIControlStateSelected];
+	}
+	
+	sender.selected = !sender.isSelected;
 	self.flipCount++;
 }
 
