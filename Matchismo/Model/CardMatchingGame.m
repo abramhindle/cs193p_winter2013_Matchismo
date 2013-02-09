@@ -12,6 +12,7 @@
 
 // Private instance methods
 @property (strong, nonatomic) NSMutableArray *cards;
+@property (nonatomic) int score;
 
 @end
 
@@ -23,6 +24,24 @@
 	}
 	
 	return _cards;
+}
+
+- (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck {
+	self = [super init];
+	
+	if (self) {
+		for (int i = 0; i < count; i++) {
+			Card *card = [deck drawRandomCard];
+			
+			if (!card) {
+				self = nil;
+			} else {
+				self.cards[i] = card;
+			}
+		}
+	}
+	
+	return self;
 }
 
 @end
