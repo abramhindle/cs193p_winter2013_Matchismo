@@ -8,7 +8,7 @@
 
 #import "CardCaseViewController.h"
 #import "Model/PlayingCardDeck.h"
-#import "CardMatchingGame.h"
+#import "Model/CardMatchingGame.h"
 
 @interface CardCaseViewController ()
 
