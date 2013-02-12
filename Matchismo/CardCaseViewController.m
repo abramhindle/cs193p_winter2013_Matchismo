@@ -71,4 +71,11 @@
 	[self updateUI];
 }
 
+- (IBAction)dealNewGame {
+	self.game = nil;
+	self.flipCount = 0;
+	
+	[self updateUI];
+}
+
 @end
