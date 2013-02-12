@@ -50,7 +50,6 @@
 	int score = 0;
 	
 	if (otherCards.count == 1) {
-		
 		id otherCard = [otherCards lastObject];
 		
 		if ([otherCard isKindOfClass:[PlayingCard class]]) {
