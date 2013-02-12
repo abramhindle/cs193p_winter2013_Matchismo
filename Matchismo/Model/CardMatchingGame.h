@@ -19,4 +19,7 @@
 
 @property (nonatomic, readonly) int score;
 
+// Results after flipping a card.
+@property (nonatomic, readonly) NSString *results;
+
 @end

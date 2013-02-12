@@ -13,6 +13,7 @@
 // Private instance methods
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (nonatomic) int score;
+@property (strong, nonatomic) NSString *results;
 
 @end
 
@@ -54,7 +55,8 @@
 
 - (void)flipCardAtIndex:(NSUInteger)index {
 	Card *card = [self cardAtIndex:index];
-	
+	int points = 0;
+
 	if (!card.isUnplayable) {
 		if (!card.isFaceUp) {
 			// see if flipping this card up creates a match
@@ -65,10 +67,18 @@
 					if (matchScore) {
 						otherCard.unplayable = YES;
 						card.unplayable = YES;
-						self.score += matchScore * MATCH_BONUS;
+						
+						points = matchScore * MATCH_BONUS;
+						self.score += points;
+						
+						self.results = [NSString stringWithFormat:@"Matched %@ and %@ for %d points!", card.contents, otherCard.contents, points];
 					} else {
 						otherCard.faceUp = NO;
-						self.score -= MISMATCH_PENALTY;
+						
+						points = MISMATCH_PENALTY;
+						self.score -= points;
+						
+						self.results = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!", card.contents, otherCard.contents, points];
 					}
 					
 					break;
@@ -76,6 +86,10 @@
 			}
 			
 			self.score -= FLIP_COST;
+			
+			if (points == 0) {
+				self.results = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+			}
 		}
 		
 		card.faceUp = !card.isFaceUp;

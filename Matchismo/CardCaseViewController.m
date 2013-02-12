@@ -55,6 +55,7 @@
 	}
 	
 	self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+	self.resultsLabel.text = self.game.results;
 }
 
 - (void)setCardButtons:(NSArray *)cardButtons {
